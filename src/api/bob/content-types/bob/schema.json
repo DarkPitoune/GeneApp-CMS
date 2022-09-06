@@ -1,0 +1,18 @@
+{
+  "kind": "singleType",
+  "collectionName": "bobs",
+  "info": {
+    "singularName": "bob",
+    "pluralName": "bobs",
+    "displayName": "bob"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "nom": {
+      "type": "string"
+    }
+  }
+}
