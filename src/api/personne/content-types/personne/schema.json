@@ -1,0 +1,37 @@
+{
+  "kind": "collectionType",
+  "collectionName": "personnes",
+  "info": {
+    "singularName": "personne",
+    "pluralName": "personnes",
+    "displayName": "Personne"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Nom": {
+      "type": "string"
+    },
+    "Biographie": {
+      "type": "richtext"
+    },
+    "Naissance": {
+      "type": "date"
+    },
+    "Portrait": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
+    },
+    "Mort": {
+      "type": "date"
+    }
+  }
+}
