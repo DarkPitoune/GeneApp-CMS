@@ -4,7 +4,8 @@
   "info": {
     "singularName": "personne",
     "pluralName": "personnes",
-    "displayName": "Personne"
+    "displayName": "Personne",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -21,17 +22,46 @@
       "type": "date"
     },
     "Portrait": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": true
+      ]
     },
     "Mort": {
       "type": "date"
+    },
+    "Enfants": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::personne.personne",
+      "inversedBy": "Parents"
+    },
+    "Parents": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::personne.personne",
+      "inversedBy": "Enfants"
+    },
+    "Sexe": {
+      "type": "enumeration",
+      "enum": [
+        "H",
+        "F"
+      ]
+    },
+    "Conjoint": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::personne.personne"
+    },
+    "Notes": {
+      "type": "richtext",
+      "private": true
     }
   }
 }
