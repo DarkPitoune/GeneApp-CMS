@@ -9,11 +9,13 @@
     "build": "strapi build",
     "strapi": "strapi"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "patch-package": "^6.4.7"
+  },
   "dependencies": {
-    "@strapi/strapi": "4.3.6",
-    "@strapi/plugin-users-permissions": "4.3.6",
     "@strapi/plugin-i18n": "4.3.6",
+    "@strapi/plugin-users-permissions": "4.3.6",
+    "@strapi/strapi": "4.3.6",
     "better-sqlite3": "7.4.6"
   },
   "author": {
