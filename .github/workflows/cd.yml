@@ -1,0 +1,30 @@
+name: Deploy CMS on VM
+on:
+  push:
+    branches:
+      - master
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      NODE_ENV: production
+    steps:
+    - uses: actions/checkout@v1
+    - name: Install Node.js
+      uses: actions/setup-node@v1
+      with:
+        node-version: '14.x'
+    - name: Install npm dependencies
+      run: npm install
+    - name: Run build task
+      run: npm run build
+
+    - name: Deploy to Production server
+      uses: easingthemes/ssh-deploy@main
+      env:
+        SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+        REMOTE_USER: pitoune
+        REMOTE_HOST: genealogie.dhebrail.fr
+        SOURCE: "build/"
+        TARGET: "/var/www/Genealogie-dHebrail/GeneApp-CMS/build"
+        SCRIPT_AFTER: NODE_ENV=production pm2 restart CMS
