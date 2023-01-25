@@ -29,6 +29,16 @@
     "Notes": {
       "type": "richtext",
       "private": true
+    },
+    "Photo": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
     }
   }
 }
