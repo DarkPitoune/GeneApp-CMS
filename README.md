@@ -1,34 +1,25 @@
-# 🚀 Getting started with GeneApp-CMS
+# GeneApp CMS
 
-Strapi comes with a full featured [Command Line Interface](https://docs.strapi.io/developer-docs/latest/developer-resources/cli/CLI.html) (CLI) which lets you scaffold and manage your project in seconds.
+This project is a Strapi application, used as a headless CMS for [the d'Hébrail's GeneApp project](genealogie.dhebrail.fr). You'll find useful documentation [here](https://docs.strapi.io/developer-docs/).
 
-### `develop`
+## How to run
 
-Start your Strapi application with autoReload enabled. [Learn more](https://docs.strapi.io/developer-docs/latest/developer-resources/cli/CLI.html#strapi-develop)
+The project uses node.js and npm. Ensure you use node 14.
 
-```
-npm run develop
-```
+Clone the repository and run the following commands in the project directory.
 
-### `start`
+- install dependencies: `npm install`
+- create an `.env` file `cp .env.example .env`
+- run locally (with autoReload enabled): `npm run develop`
+- run a production server:
+  - build the admin panel: `NODE_ENV=production npm run build`
+  - `npm run start`
 
-Start your Strapi application with autoReload disabled. [Learn more](https://docs.strapi.io/developer-docs/latest/developer-resources/cli/CLI.html#strapi-start)
+## Deployment
 
-```
-npm run start
-```
+Deployment is handled by github's actions.
 
-### `build`
-
-Build your admin panel. [Learn more](https://docs.strapi.io/developer-docs/latest/developer-resources/cli/CLI.html#strapi-build)
-
-```
-npm run build
-```
-
-## ⚙️ Deployment
-
-Strapi gives you many possible deployment options for your project. Find the one that suits you on the [deployment section of the documentation](https://docs.strapi.io/developer-docs/latest/setup-deployment-guides/deployment.html).
+If it's the first time, you'll need to ssh to the machine and run:
 
 ```
 NODE_ENV=production pm2 start npm --name "CMS" -- start
