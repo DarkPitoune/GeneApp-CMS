@@ -13,9 +13,9 @@
     "patch-package": "^6.4.7"
   },
   "dependencies": {
-    "@strapi/plugin-i18n": "4.3.6",
-    "@strapi/plugin-users-permissions": "4.3.6",
-    "@strapi/strapi": "4.3.6",
+    "@strapi/plugin-i18n": "4.16.2",
+    "@strapi/plugin-users-permissions": "4.16.2",
+    "@strapi/strapi": "4.16.2",
     "better-sqlite3": "7.4.6",
     "pm2": "^5.2.2"
   },
@@ -24,10 +24,6 @@
   },
   "strapi": {
     "uuid": "1b8c03da-bbcb-4fe3-8cf4-e77cc519c6af"
-  },
-  "engines": {
-    "node": ">=14.19.1 <=16.x.x",
-    "npm": ">=6.0.0"
   },
   "license": "MIT"
 }

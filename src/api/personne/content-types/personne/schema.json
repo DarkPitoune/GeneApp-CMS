@@ -48,10 +48,17 @@
         "F"
       ]
     },
-    "conjoints": {
+    "Femmes": {
       "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::personne.personne"
+      "relation": "manyToMany",
+      "target": "api::personne.personne",
+      "inversedBy": "Maris"
+    },
+    "Maris": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::personne.personne",
+      "inversedBy": "Femmes"
     },
     "Notes": {
       "type": "richtext",
