@@ -12,6 +12,8 @@ backup_file="${backup_dir}/${export_file}_${timestamp}"
 
 # Run the backup command and capture the exit status and output
 nvm use 20
+# create backup directory if it doesn't exist
+mkdir -p "${backup_dir}"
 export_output=$(yarn strapi export --file "${backup_file}" --no-encrypt)
 backup_exit_status=$?
 
