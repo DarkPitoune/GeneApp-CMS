@@ -4,6 +4,7 @@
 backup_dir="backup"
 export_file="sauvegarde"
 source .env
+source ~/.nvm/nvm.sh
 
 # Create a timestamp for the backup file
 timestamp=$(date +"%Y%m%d%H%M%S")
