@@ -33,13 +33,13 @@
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::personne.personne",
-      "inversedBy": "Parents"
+      "mappedBy": "Parents"
     },
     "Parents": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::personne.personne",
-      "inversedBy": "Enfants"
+      "mappedBy": "Enfants"
     },
     "Sexe": {
       "type": "enumeration",
@@ -52,13 +52,13 @@
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::personne.personne",
-      "inversedBy": "Maris"
+      "mappedBy": "Maris"
     },
     "Maris": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::personne.personne",
-      "inversedBy": "Femmes"
+      "mappedBy": "Femmes"
     },
     "Notes": {
       "type": "richtext",

@@ -362,6 +362,100 @@ export interface AdminTransferTokenPermission extends Schema.CollectionType {
   };
 }
 
+export interface ApiArticleArticle extends Schema.CollectionType {
+  collectionName: 'articles';
+  info: {
+    singularName: 'article';
+    pluralName: 'articles';
+    displayName: 'Article';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Titre: Attribute.String;
+    Description: Attribute.RichText;
+    Categorie: Attribute.Enumeration<
+      ['Histoires de ouf', 'Maisons de dingues', 'Le reste de malade']
+    >;
+    Notes: Attribute.RichText & Attribute.Private;
+    Photo: Attribute.Media;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::article.article',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::article.article',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiPersonnePersonne extends Schema.CollectionType {
+  collectionName: 'personnes';
+  info: {
+    singularName: 'personne';
+    pluralName: 'personnes';
+    displayName: 'Personne';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Nom: Attribute.String;
+    Biographie: Attribute.RichText;
+    Portrait: Attribute.Media;
+    Enfants: Attribute.Relation<
+      'api::personne.personne',
+      'manyToMany',
+      'api::personne.personne'
+    >;
+    Parents: Attribute.Relation<
+      'api::personne.personne',
+      'manyToMany',
+      'api::personne.personne'
+    >;
+    Sexe: Attribute.Enumeration<['H', 'F']>;
+    Femmes: Attribute.Relation<
+      'api::personne.personne',
+      'manyToMany',
+      'api::personne.personne'
+    >;
+    Maris: Attribute.Relation<
+      'api::personne.personne',
+      'manyToMany',
+      'api::personne.personne'
+    >;
+    Notes: Attribute.RichText & Attribute.Private;
+    Naissance: Attribute.String & Attribute.DefaultTo<'inconnue'>;
+    Mort: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::personne.personne',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::personne.personne',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface PluginUploadFile extends Schema.CollectionType {
   collectionName: 'files';
   info: {
@@ -768,100 +862,6 @@ export interface PluginI18NLocale extends Schema.CollectionType {
   };
 }
 
-export interface ApiArticleArticle extends Schema.CollectionType {
-  collectionName: 'articles';
-  info: {
-    singularName: 'article';
-    pluralName: 'articles';
-    displayName: 'Article';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    Titre: Attribute.String;
-    Description: Attribute.RichText;
-    Categorie: Attribute.Enumeration<
-      ['Histoires de ouf', 'Maisons de dingues', 'Le reste de malade']
-    >;
-    Notes: Attribute.RichText & Attribute.Private;
-    Photo: Attribute.Media;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::article.article',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::article.article',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiPersonnePersonne extends Schema.CollectionType {
-  collectionName: 'personnes';
-  info: {
-    singularName: 'personne';
-    pluralName: 'personnes';
-    displayName: 'Personne';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    Nom: Attribute.String;
-    Biographie: Attribute.RichText;
-    Portrait: Attribute.Media;
-    Enfants: Attribute.Relation<
-      'api::personne.personne',
-      'manyToMany',
-      'api::personne.personne'
-    >;
-    Parents: Attribute.Relation<
-      'api::personne.personne',
-      'manyToMany',
-      'api::personne.personne'
-    >;
-    Sexe: Attribute.Enumeration<['H', 'F']>;
-    Femmes: Attribute.Relation<
-      'api::personne.personne',
-      'manyToMany',
-      'api::personne.personne'
-    >;
-    Maris: Attribute.Relation<
-      'api::personne.personne',
-      'manyToMany',
-      'api::personne.personne'
-    >;
-    Notes: Attribute.RichText & Attribute.Private;
-    Naissance: Attribute.String & Attribute.DefaultTo<'inconnue'>;
-    Mort: Attribute.String;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::personne.personne',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::personne.personne',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -872,6 +872,8 @@ declare module '@strapi/types' {
       'admin::api-token-permission': AdminApiTokenPermission;
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
+      'api::article.article': ApiArticleArticle;
+      'api::personne.personne': ApiPersonnePersonne;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::content-releases.release': PluginContentReleasesRelease;
@@ -880,8 +882,6 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'plugin::i18n.locale': PluginI18NLocale;
-      'api::article.article': ApiArticleArticle;
-      'api::personne.personne': ApiPersonnePersonne;
     }
   }
 }
