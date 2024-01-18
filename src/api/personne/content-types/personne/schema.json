@@ -29,36 +29,12 @@
         "audios"
       ]
     },
-    "Enfants": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::personne.personne",
-      "mappedBy": "Parents"
-    },
-    "Parents": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::personne.personne",
-      "mappedBy": "Enfants"
-    },
     "Sexe": {
       "type": "enumeration",
       "enum": [
         "H",
         "F"
       ]
-    },
-    "Femmes": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::personne.personne",
-      "mappedBy": "Maris"
-    },
-    "Maris": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::personne.personne",
-      "mappedBy": "Femmes"
     },
     "Notes": {
       "type": "richtext",
@@ -72,6 +48,18 @@
     "Mort": {
       "type": "string",
       "regex": "^(?:inconnue|\\d{4}(?:-\\d{2}(?:-\\d{2})?)?|)$"
+    },
+    "Mari": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::personne.personne",
+      "inversedBy": "Femme"
+    },
+    "Femme": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::personne.personne",
+      "inversedBy": "Mari"
     }
   }
 }
